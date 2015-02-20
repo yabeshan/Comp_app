@@ -1,0 +1,335 @@
+﻿<section id="reconmonitordetails-view" class="view clearfix">
+
+    <p id="errorBlock"><img src="../Images/error.png" id="errorIcon" alt="ERROR:" /><span id="errorMessage"></span></p>
+
+    <div id="order">
+        <!-- THE ORDER-->
+        <a data-bind="click: back" class="back"><i class="icon-arrow"></i><span>Back to Repair Orders</span></a>
+        <div class="filter clearfix" data-bind="visible: toolbar.visible" style="display: none;">
+            <div class="priority">
+                <span>Priority:</span>
+                <input data-role="dropdownlist"
+                       data-value-primitive="true"
+                       data-text-field="text"
+                       data-value-field="id"
+                       data-bind="value: priority.value,
+                              source: priority.list,
+                              events: { change: priority.onChange }" />
+            </div>
+            <div class="phase" data-bind="visible: phaseEnforcementData.visible" style="display: none;">
+                <span>Phase<br /> Enforcement:</span>
+                <div class="inline switch">
+                    <input type="radio" id="phaseEn-on" value="on" name="phaseEn" data-bind="checked: phaseEnforcementData.status, events: { change: phaseEnforcementData.onChange }" />
+                    <label for="phaseEn-on">on</label>
+                    <input type="radio" id="phaseEn-off" value="off" name="phaseEn" data-bind="checked: phaseEnforcementData.status, events: { change: phaseEnforcementData.onChange }" />
+                    <label for="phaseEn-off">off</label>
+                </div>
+            </div>
+            <div class="invoice" data-bind="visible: invoiceCompletedRoOnly.visible, events: { change: invoiceCompletedRoOnly.onChange }" style="display: none;">
+                <label>
+                    <input type="checkbox" data-bind="checked: invoiceCompletedRoOnly.value" />
+                    <span class="new_checkbox"></span>
+                    <span class="inline">Invoice<br /> completed RO only</span>
+                </label>
+            </div>
+            <div class="status" data-bind="visible: status.visible" style="display: none;">
+                <span>Status:</span>
+                <!--<div class="selectBox"></div>-->
+
+                <input data-role="dropdownlist"
+                       data-value-primitive="true"
+                       data-text-field="name"
+                       data-value-field="id"
+                       data-bind="value: priority.value,
+                              source: status.list,
+                              events: { change: status.onChange }" />
+
+            </div>
+            <div class="reason" data-bind="visible: reason.visible" style="display: none;">
+                <span>Reason:</span>
+
+                <input data-role="dropdownlist"
+                       data-value-primitive="true"
+                       data-text-field="name"
+                       data-value-field="id"
+                       data-bind="value: priority.value,
+                              source: reason.list,
+                              events: { change: reason.onChange }" />
+
+            </div>
+        </div><!-- end of .filter -->
+
+        <div class="orderInfo">
+            <h5>
+                <strong data-bind="text: no"></strong>
+                <div class="pull-right">
+                    <a style="display: none;" data-bind="visible: isVendor"><i class=" icon-flag" data-bind="click: flagIconClicked"></i></a>
+                    <div class="drop flags" style="display: none;" data-bind="visible: flagDropVisible">
+                        <div class="pull-right">
+                            <span data-bind="class: {active: flagName == 'White'}"><a href="\\#" class="white" data-bind="click: changeFlag}"></a></span>
+                            <span data-bind="class: {active: flagName == 'Red'}"><a href="\\#" class="red" data-bind="click: changeFlag"></a></span>
+                            <span data-bind="class: {active: flagName == 'Orange'}"><a href="\\#" class="orange" data-bind="click: changeFlag"></a></span>
+                            <span data-bind="class: {active: flagName == 'Green'}"><a href="\\#" class="green" data-bind="click: changeFlag"></a></span>
+                            <span data-bind="class: {active: flagName == 'Blue'}"><a href="\\#" class="blue" data-bind="click: changeFlag"></a></span>
+                            <span data-bind="class: {active: flagName == 'Purple'}"><a href="\\#" class="purple" data-bind="click: changeFlag"></a></span>
+                        </div>
+                    </div>
+
+                    <a style="display: none;" data-bind="visible: priorityIconVisible"><i class=" icon-warning" data-bind="click: priorityIconClicked"></i></a>
+                    <div class="drop warning" style="display: none;" data-bind="visible: priorityDropVisible">
+                        <div class="pull-right">
+                            <span class="icon-arrow-up text-red priority-button" data-bind="click: changePriority, class: {active: priority.value == 1}"></span>
+                            <span class="icon-arrow-down text-green priority-button" data-bind="click: changePriority, class: {active: priority.value == -1}"></span>
+                            <span class="icon-arrow-right text-orange priority-button" data-bind="click: changePriority, class: {active: priority.value == 0}"></span>
+                        </div>
+                    </div>
+
+                    <a><i class="icon-printer"></i></a>
+                    <a href="#"><i class="icon-pencil hidden"></i></a>
+                </div>
+            </h5>
+            <div class="order-info-details"></div>
+        </div>
+    </div> <!--THE ORDER-->
+
+
+
+
+    <div class="services hidden">
+        <h5>Services</h5>
+
+        <!-- TABLE HEADER -->
+        <div class="serviceRow theader clearfix">
+            <div class="clmn_1"></div>
+            <div class="clmn_2">Service</div>
+            <div class="clmn_3">Amount</div>
+            <div class="clmn_4">Vendor / Technician</div>
+            <div class="clmn_5">Status</div>
+            <div class="clmn_6">Started / Completed</div>
+            <div class="clmn_7">Other</div>
+        </div><!-- end of .row -->
+        <div class="service-data"></div>
+    </div><!-- end of .services -->
+
+    <div class="discounts pull-left hidden">
+        <h5>Discounts / Fees / Taxes</h5>
+    </div>
+
+    <div class="docs pull-right hidden">
+    </div>
+
+
+    <!--ORDER TEMPLATE-->
+    <script type="x-kendo-template" id="doc-template">
+        <h5>Related Documents</h5>
+        <table>
+            <tr>
+                <th>Type</th>
+                <th>Date</th>
+                <th>\\#</th>
+            </tr>
+            # if(order.estimationId != null) {#
+            <tr>
+                <td>Estimate</td>
+                <td>#:order.estimationDateF#</td>
+                <td>#:order.estimationNo#</td>
+            </tr>
+            # } else if(order.invoiceId != null) {#
+            <tr>
+                <td>Invoice</td>
+                <td>#:order.invoiceDateF#</td>
+                <td>#:order.invoiceNo#</td>
+            </tr>
+            #}#
+        </table>
+    </script>
+
+    <!--ORDER TEMPLATE-->
+    <script type="x-kendo-template" id="order-template">
+        <div class="orderInfoWrapper clearfix">
+            <div class="pull-left">
+                <p><span>Stock / RO:</span><strong>#: stockNo ? stockNo : '' # #: roNo ? ('/ ' + roNo) : '' #</strong></p>
+                <p><span>Vehicle:</span><strong>#: ((make || '') + " " + (model || '') + " " + (color || '') + " " + (year || '')).trim() #</strong></p>
+                <p><span>VIN:</span><strong>#:vin || ''#</strong></p>
+                <p><span>Customer:</span><strong>#:clientName || ''#</strong></p>
+            </div>
+            <div class="pull-right">
+                # var info = targetDateInfo == '' ? '' : '(' + targetDateInfo + ')' #
+                <p>
+                    <span>Target Date:</span><strong>
+                        # if (isVendor) {#
+                        <input style="width: 121px;" class="dateInput" data-bind="value: data.targetDateF, events: {change: targetDateChanged}" />
+                        #}else {#
+                        #: data.targetDateF #
+                        #}#
+                    </strong> <span class="text-red">#=info#</span>
+                </p>
+                <p>
+                    <span>Completed:</span>
+                    <span class="progressWrapper">
+                        <span class="progressBar" style="width: #: Number(completed).toFixed(0) #%; background-color: #: completedColor #"></span>
+                    </span>
+                    <strong>#: Number(completed).toFixed(0) #%</strong>
+                </p>
+                <p><span>Active Phase:</span><strong>#:phaseName || ''#</strong></p>
+                <p><span>Amount:</span><strong>#: '$' + (amount || '0') #</strong></p>
+            </div>
+        </div><!-- end of .orderInfoWrapper -->
+
+        <div class="orderInfoWrapper secondLine clearfix" data-bind="visible: expanded">
+            <div class="pull-left">
+                <p><span>Mileage:</span><strong>#:milage || ''#</strong></p>
+                <p><span>Plate:</span><strong>#:plateNo || ''#</strong></p>
+                <p><span>Type:</span><strong>#:vehicleTypeName || ''#</strong></p>
+            </div>
+            <div class="pull-right">
+                # var startedInfo = startedDateInfo == '' ? '' : '(' + startedDateInfo + ')';
+                var repairTime = completedDateInfo == '' ? '' : '(' + completedDateInfo + ')'; #
+                <p>
+                    <span>Started:</span><strong>
+
+                        # if (isVendor) {#
+                        <input style="width: 121px;" class="dateInput orderDate" data-bind="value: data.orderDateF, events: {change: startedDateChanged}" />
+                        #}else {#
+                        #: data.orderDateF #
+                        #}#
+
+                    </strong> <span class="text-red">#:startedInfo#</span>
+                </p>
+                <p><span>Completed (Repair) Time:</span><strong>#:completedDateF#</strong> <span class="text-red">#:repairTime#</span></p>
+                <p>
+                    <span>Delivered:</span><strong>
+
+                        # if (isVendor) {#
+                        <input style="width: 121px;" class="dateInput deliveredDate" data-bind="value: data.deliveredDateF, events: {change: deliveredDateChanged}" />
+                        #}else {#
+                        #: data.deliveredDateF #
+                        #}#
+
+                    </strong>
+                </p>
+            </div>
+        </div><!-- end of .orderInfoWrapper -->
+        <div class="moreInfo">
+            <p data-bind="click: toggle">
+                <span data-bind="text: panelText"></span>
+                <span class="pull-right">
+                    <i data-bind="class: { icon-arrow-up5: expanded, icon-arrow-down5: collapsed }"></i>
+                </span>
+            </p>
+            <div class="additionalInfo">
+                # if (isVendor) {#
+                <input class="description-edit" placeholder="Type description here" data-bind="value : data.orderDescription, events: {keypress: startDescriptionInterval}" />
+                #}else {#
+                <label>#: data.orderDescription ? data.orderDescription : '' #</label>
+                #}#
+            </div>
+        </div>
+    </script>
+
+
+    <!--SERVICES-->
+    <script id="service-template" type="text/x-kendo-template">
+        #for (var i=0; i < groups.length; i++) { var group=groups[i]; #
+        <div class="serviceTable">
+            <div class="serviceRow #=group.statusClass || groups[0].statusClass# showhide clearfix" data-bind="click: toggleRow">
+                <div class="clmn_1"><i class="switchTable icon-arrow-down5"></i></div>
+                <div class="clmn_2">#:group.items[0] != null ? group.items[0].phaseName || '' : '' #</div>
+                <div class="clmn_3"><strong>$#:Number(group.aggregates.amount.sum).toFixed(2)#</strong></div>
+                <div class="clmn_4"></div>
+                <div class="clmn_5">
+                    <div>
+                        <div class="#: groups.textDisplayClass #">#:group.status#</div>
+                        <input data-id="#:group.value#" class="group-status-dropdown #: groups.controlDisplayClass #" style="width: 100px" />
+                    </div>
+                </div>
+                <div class="clmn_6">
+                    <p>
+                        <strong>#=group.startDate#</strong>
+                        <span class="#= group.startDate != '' || group.finishDate != '' ? 'date_arrow' : '' #"></span>
+                        <strong>#=group.finishDate#</strong>
+                    </p>
+                </div>
+                <div class="clmn_7"></div>
+            </div>
+
+            <div class="innerTable" style="display:none;">
+                # for (var j=0,len=group.items.length; j < len; j++) {
+                var service = group.items[j]; #
+                <div class="serviceRow">
+                    <div class="clmn_1"><i class="help"><i class="#:service.class#"></i><span class="helpInfo">#:service.orderServiceStatusName#</span></i></div>
+                    <div class="clmn_2"><strong>#:service.serviceName#</strong></div>
+                    <div class="clmn_3"><strong>#:service.amount < 0 ? '- $' + Number(Math.abs(service.amount)).toFixed(2) : '$' + Number(service.amount).toFixed(2) #</strong></div>
+                    <div class="clmn_4">
+                        <div>
+                            <div class="#: groups.textDisplayClass #">#:service.teamName#</div>
+                            <input data-id="#:service.serviceId#" class="team-dropdown #: groups.controlDisplayClass #" style="width: 100px" value="#:service.teamId#" />
+                        </div>
+                        <div>
+                            <div class="#: groups.textDisplayClass #">#: service.teamName == null || service.teamName == '' ? '/ ' + service.fullName : service.fullName #</div>
+
+                            <input data-id="#:service.teamId# " class=" technician-dropdown #: groups.controlDisplayClass #" style="width: 100px" value="#:service.employeeId#" />
+
+                        </div>
+                    </div>
+                    <div class="clmn_5">
+                        <div>
+                            <div class="#: groups.textDisplayClass #">#: service.orderServiceStatusName #</div>
+                            <input data-id="#:service.serviceId#" class="service-status-dropdown #: groups.controlDisplayClass #" style="width: 100px" value="#: service.orderServiceStatusID #" />
+                        </div>
+                    </div>
+                    <div class="clmn_6">
+                        <p>
+                            <strong>#=service.startDate#</strong>
+                            <span class="#= service.startDate != '' || service.finishDate != '' ? 'date_arrow' : '' #"></span>
+                            <strong>#=service.finishDate#</strong>
+                        </p>
+                        <p>Past Due</p>
+                    </div>
+                    <div class="clmn_7">
+                        <div class="inline rel">
+                            <i class="icon-list"></i>
+                            <i class="icon-arrow-down2"></i>
+                        </div>
+                    </div>
+                </div>
+                # } #
+            </div>
+        </div>
+        # } #
+        <div class="serviceRow tfooter clearfix">
+            <div class="clmn_1"></div>
+            <div class="clmn_2">Total:</div>
+            <div class="clmn_3"><strong>$#:Number(sum).toFixed(2)#</strong></div>
+        </div>
+    </script>
+    <script id="servicePercentage-template" type="text/x-kendo-template">
+        <table id="percentage">
+            <tr>
+                <th>Service</th>
+                <th>Price</th>
+                <th>Notes</th>
+            </tr>
+            # for (var t=0; t < items.length; t++) { var item=items[t]; #
+            <tr>
+                <td>#:item.serviceName#</td>
+                <td>$#:Math.abs(item.amount)#</td>
+                <td>
+                    <i class="help">
+                        <i class="icon-comment #: (item.orderDescription || '').length > 0 ? '' : 'hidden'#" data-bind="click: click"></i>
+                        <span class="helpInfo hidden"><i class="icon-cross close"></i>#:item.orderDescription#</span>
+                    </i>
+                </td>
+            </tr>
+            # } #
+            <tfoot>
+                <tr>
+                    <td>Total:</td>
+                    <td style="border-width: 1px 0;">$#:Number(sum).toFixed(2)#</td>
+                    <td style="border-left: none;"></td>
+                </tr>
+            </tfoot>
+        </table>
+    </script>
+
+</section>

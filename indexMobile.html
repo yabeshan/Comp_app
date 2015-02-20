@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Repair360</title>
+
+    <link href="Styles/boilerplate-styles.css" rel="stylesheet" />
+    <link href="Styles/bootstrap.css" rel="stylesheet" />
+    <link href="Styles/site.css" rel="stylesheet" />
+    <link href="Styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <script data-main="Scripts/mainMobile" src="Scripts/lib/require.js"></script>
+</head>
+<body>
+    <div data-role="view" id="index" data-model="mobileApp" data-layout="main-layout" data-bind="events: { init: init }"></div>
+
+    <div data-role="layout" data-id="main-layout">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title">
+                    <a href="#app-drawer" data-rel="drawer" data-role="button" data-align="left" data-icon="details"></a>
+                </span>
+                <div class="pull-right user-info">
+                    <div class="login">
+                        <a data-bind="click: logout"><i class="icon-logout"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<nav id="menu" class="main-nav">
+        <div id="busyindicator"></div>
+        <ul data-template="ul-template" data-bind="source: items, click: onClick"></ul>
+    </nav>-->
+    <script id="ul-template" type="text/x-kendo-template">
+        <li class="route-top">
+            <a>
+                <i data-bind="attr: { class: icon }"></i>
+                <span data-bind="attr: { data-id: url }, text: name"></span>
+            </a>
+        </li>
+    </script>
+
+    <div data-role="drawer" id="app-drawer">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title">Menu</span>
+            </div>
+        </div>
+        <ul id="menuListView">
+            <!--<li>
+                <a href="views/mobile/servicerequests.html"><i class="icon-paperplane"></i> Service Requests</a>
+            </li>
+            <li>
+                <a href="views/mobile/reconmonitor.html"><i class="icon-target"></i> Recon Monitor</a>
+            </li>
+            <li>
+                <a href="views/mobile/estimates.html"><i class="icon-target"></i> Estimates</a>
+            </li>
+            <li>
+                <a href="views/mobile/estimates.html"><i class="icon-clipboard"></i> Estimates</a>
+            </li>
+            <li>
+                <a href="views/mobile/invoices.html"><i class="icon-creditcard"></i> Invoices</a>
+            </li>
+            <li>
+                <a href="views/mobile/dashboard.html"><i class="icon-tools"></i> Dashboard</a>
+            </li>
+            <li>
+                <a href="views/mobile/reports.html"><i class="icon-archive"></i> Reports</a>
+            </li>
+            <li>
+                <a href="views/mobile/notifications.html"><i class="icon-bell"></i> Notifications</a>
+            </li>-->
+        </ul>
+    </div>
+</body>
+</html>

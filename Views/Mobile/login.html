@@ -1,0 +1,65 @@
+﻿<!--<header>
+    <div class="header">
+        <div class="pull-left">
+            <a class="logo" href="/"><img alt="" src="../Images/logo.png" /></a>
+            <div class="appTitle">
+                <p><strong>Recon</strong><span>Pro</span></p>
+                <p>Companion App</p>
+            </div>
+        </div>
+        <div class="pull-right">
+            <div class="time">
+                <i class="icon-clock"></i>
+                <p><strong>Pacific Time:</strong></p>
+                <p><strong id="time"></strong></p>
+            </div>
+        </div>
+    </div>
+</header>-->
+<div data-role="view" data-title="Log-in">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span data-role="view-title"></span>
+        </div>
+    </div>
+    <div class="loginPage">
+        <form>
+            <label data-bind="class: { error: email.hasError }">
+                <input id="email" data-bind="value: email.value" type="text" placeholder="E-mail" />
+            </label>
+            <div class="errorMessege" data-bind="visible: email.hasError">
+                <p class=" text-red">
+                    <i class="icon-warning"></i>Wrong E-mail address
+                </p>
+            </div>
+            <label data-bind="class: { error: password.hasError }">
+                <input id="password" data-bind="value: password.value" type="password" placeholder="Password" />
+            </label>
+            <div class="errorMessege" data-bind="visible: password.hasError">
+                <p class="text-red">
+                    <i class="icon-warning"></i>Wrong Password
+                </p>
+            </div>
+
+
+            <input type="button" class="btn-black" data-bind="click: login" value="Login" />
+        </form>
+
+
+
+    </div>
+    <footer data-role="footer" style="text-align: center">
+        <!--<a data-bind="click: forgotPassword">Forgot password?</a>-->
+        <a data-role="button" href="/views/mobile/forgotPassword.html" data-transition="slide:left" class="link-button">Forgot password?</a>
+    </footer>
+    <style>
+        .link-button.km-button:not(.km-back) {
+            border: none;
+            color: #777;
+            text-decoration: underline;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+    </style>
+</div>

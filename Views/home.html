@@ -1,0 +1,67 @@
+﻿<header>
+    <div class="header">
+        <div class="pull-left">
+            <a class="logo" href="/"><img alt="" src="../Images/logo.png" /></a>
+            <div class="appTitle">
+                <p><strong>Recon</strong><span>Pro</span></p>
+                <p>Companion App</p>
+            </div>
+        </div>
+        <div class="pull-right user-info">
+            <div class="info"><a href="#"><i class="icon-help"></i></a></div>
+            <div class="login"><a href="#" data-bind="click: logout"><i class="icon-logout"></i>Logout</a></div>
+            <div class="user"><i class="icon-user"></i><span data-bind="text: username"></span></div>
+            <div class="time">
+                <i class="icon-clock"></i>
+                <p><strong>Pacific Time:</strong></p>
+                <p><strong id="time"></strong></p>
+            </div>
+        </div>
+    </div>
+</header>
+
+<nav id="menu" class="main-nav">
+    <div id="busyindicator"></div>
+    <ul data-template="ul-template" data-bind="source: items, click: onClick"></ul>
+</nav>
+    <script id="ul-template" type="text/x-kendo-template">
+        <li class="route-top">
+            <a>
+                <i data-bind="attr: { class: icon }"></i>
+                <span data-bind="attr: { data-id: url }, text: name"></span>
+            </a>
+        </li>
+    </script>
+
+    <div class="content">
+
+        <section class="main">
+            <!-- internal pages are here -->
+        </section>
+
+    </div>
+<script type="text/javascript">
+    function jsClockTimeZone() {
+        var TimeZone = "Pacific Time";
+        var TimezoneOffset = -480;  // adjust for time zone
+        var localTime = new Date();
+        var ms = localTime.getTime()
+                   + (localTime.getTimezoneOffset() * 60000)
+                   + TimezoneOffset * 60000;
+        var time = new Date(ms);
+        var hour = time.getHours();
+        var minute = time.getMinutes();
+        var second = time.getSeconds();
+        var temp = "" + ((hour > 12) ? hour - 12 : hour);
+        if (hour == 0) temp = "12";
+        if (temp.length == 1) temp = " " + temp;
+        temp += ((minute < 10) ? ":0" : ":") + minute;
+        temp += ((second < 10) ? ":0" : ":") + second;
+        temp += (hour >= 12) ? " PM" : " AM";
+        document.getElementById('time').innerHTML = /*TimeZone + " " +*/ temp;
+        setTimeout("jsClockTimeZone()", 1000);
+    }
+
+    jsClockTimeZone();
+</script>
+
