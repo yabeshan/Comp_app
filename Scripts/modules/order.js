@@ -1,4 +1,4 @@
-﻿define(['jquery', 'kendo', 'modules/config', 'modules/users', 'helpers/generalHelper', 'helpers/ordersHelper', 'services/ordersSrv'],
+﻿define(['jquery', 'kendo', 'modules/config', 'modules/users', 'helpers/generalHelper', 'helpers/ordersHelper', 'Services/ordersSrv'],
     function($, kendo, config, user, util, orderUtil, srv) {
 
         var descriptionTimer;

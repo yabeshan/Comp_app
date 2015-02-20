@@ -1,4 +1,4 @@
-﻿define(['jquery', 'kendo', 'services/ordersSrv', 'modules/config', 'helpers/generalHelper', 'helpers/ordersHelper', 'helpers/pagingHelper'],
+﻿define(['jquery', 'kendo', 'Services/ordersSrv', 'modules/config', 'helpers/generalHelper', 'helpers/ordersHelper', 'helpers/pagingHelper'],
     function ($, kendo, srv, config, util, orderUtil) {
 
         var maxRecordCount = 300;
