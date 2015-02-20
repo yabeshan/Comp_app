@@ -4,10 +4,10 @@
 	id		= "com.you.www"
 	version 	= "1.0.0">
 
-	<name>Your Mind Blowing App</name>
+	<name>Comp App</name>
 
 	<description>
-		A brilliant mobile application written by you and now available on every platform thanks to Kendo UI Mobile and PhoneGap Build.
+Comp App            description
 	</description>
 
 	<author href="build.phonegap.com"
