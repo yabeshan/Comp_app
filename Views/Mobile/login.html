@@ -16,13 +16,13 @@
         </div>
     </div>
 </header>-->
-<div data-role="view" data-title="Log-in">
-    <div data-role="header">
-        <div data-role="navbar">
-            <span data-role="view-title"></span>
-        </div>
-    </div>
+<div data-role="view">
+    <header data-role="navbar" style="text-align:center">
+        <span data-role="view-title">Login</span>
+    </header>
     <div class="loginPage">
+
+        <p><strong>Login</strong></p>
         <form>
             <label data-bind="class: { error: email.hasError }">
                 <input id="email" data-bind="value: email.value" type="text" placeholder="E-mail" />
@@ -55,11 +55,12 @@
     <style>
         .link-button.km-button:not(.km-back) {
             border: none;
-            color: #777;
+            color:#777;
             text-decoration: underline;
             box-sizing: border-box;
             -moz-box-sizing: border-box;
             -webkit-box-sizing: border-box;
         }
     </style>
+
 </div>

@@ -51,7 +51,7 @@ function ($, kendo, loadThen, ro, menu) {
         //router.start();
 
         $('#menuListView').kendoMobileListView({
-            template: "<a href='/views/mobile/#:url#.html'><i class='#:icon#'></i> #:name#</a>",
+            template: "<a href='/vies/mobile/#:url#.html'><i class='#:icon#'></i> #:name#</a>",
             dataSource: kendo.data.DataSource.create({ data: menu.items })
         });
     };

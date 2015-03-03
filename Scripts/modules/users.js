@@ -116,7 +116,7 @@ function ($, kendo, config, helpers) {
                     callback();
                 }
             });
-
+            debugger
             kendo.bind($('.user-info'), viewModel);
         },
         checkAuthenticated: function () {
@@ -130,6 +130,7 @@ function ($, kendo, config, helpers) {
             }
         },
         checkIsVendor: function () {
+            debugger;
             var isVendor = localStorage.getItem('isVendor');
             return $.parseJSON(isVendor);
         },

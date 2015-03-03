@@ -1,4 +1,4 @@
-﻿define(['jquery', 'kendo', 'Services/ordersSrv', 'modules/config', 'helpers/generalHelper', 'helpers/ordersHelper', 'helpers/pagingHelper'],
+﻿define(['jquery', 'kendo', 'services/ordersSrv', 'modules/config', 'helpers/generalHelper', 'helpers/ordersHelper', 'helpers/pagingHelper'],
     function ($, kendo, srv, config, util, orderUtil) {
 
         var maxRecordCount = 300;
@@ -31,7 +31,7 @@
         var pager = new Pager();
 
         var init = function() {
-            console.log('ro init')
+
             require(['modules/users'], function(user) {
 
                 var ddl;
@@ -84,6 +84,7 @@
                 }
 
                 function refreshData() {
+                    debugger;
                     setDefaultLocation();
                     srv.getOrders(pager, filter, function (ds) {
                         recordCount = ds.total();

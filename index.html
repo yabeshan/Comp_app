@@ -1,5 +1,4 @@
-﻿<!DOCTYPE html>
-<html class="no-js" lang="en">
+﻿<html class="no-js" lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Repair360</title>
@@ -8,25 +7,75 @@
     <link href="Styles/bootstrap.css" rel="stylesheet" />
     <link href="Styles/Site.css" rel="stylesheet" />
     <link href="Styles/kendo.mobile.all.min.css" rel="stylesheet" />
+
+    <style>
+        .km-arrow-e {
+            color:#333;padding-top: 10px;
+        }
+        .km-arrow-e:after,
+        .km-arrow-e:before
+        {
+            content: "\e0f1";
+        }
+
+    </style>
+
     <script data-main="Scripts/mainMobile" src="Scripts/lib/require.js"></script>
 </head>
 <body>
-    <div data-role="view" id="index" data-model="mobileApp" data-layout="main-layout" data-bind="events: { init: init }"></div>
+
+    <div data-role="view" id="home-page">
+        <div style="background-color: #900;width: 100%;height: 100%;">
+            <a href="#login-page" data-role="button">Login/Sign-up</a>
+        </div>
+    </div>
+
+    <div data-role="view" id="login-page">
+        <div style="background-color: #990;width: 100%;height: 100%;">
+            <a href="#home-page" data-role="button">Cancel</a>
+        </div>
+
+
+    </div>
+
+    <!--<div id="search-menu" data-role="popover">-->
+        <!--111-->
+    <!--</div>-->
+
+    <!--<div id="search-menu" data-role="popover" data-pane='{ "transition": "slide" }'>-->
+        <!--<div data-role="view" id="view1">-->
+            <!--View 1<br>View 1<br>View 1<br>View 1<br>View 1<br>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <div data-role="modalview" id="modalview-login" style="width: 100px;top:100px;left: 100px;margin: 0px" data-modal="true">
+        <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
+    </div>
 
     <div data-role="layout" data-id="main-layout">
-        <div data-role="header">
-            <div data-role="navbar">
-                <span data-role="view-title">
-                    <a href="#app-drawer" data-rel="drawer" data-role="button" data-align="left" data-icon="details"></a>
-                </span>
-                <div class="pull-right user-info">
-                    <div class="login">
-                        <a data-bind="click: logout"><i class="icon-logout"></i>Logout</a>
+        <header data-role="header" style="background-color: #900;height: 60px;margin: 0px;border: 0px;">
+            <div data-role="tabstrip" style="background-color: #990;width: 100%;height: 100%">
+                <div style="background-color: #eee;width: 100%;height: 100%">
+                    <a href="#modalview-login" data-rel="modalview" data-icon="arrow-e" style="border-right: 1px solid #000;float: left; width: 50px;padding-bottom: 25px"></a>
+
+                    <img src="Images/logo.png" style="padding-top: 16px" >
+
+                    <a href="#show-main-menu" data-rel="popover" data-icon="arrow-e" style="border-left: 1px solid #000;float: right; width: 50px;padding-bottom: 25px"></a>
+
+                    <div id="show-main-menu" data-role="popover" data-pane='{ "transition": "slide" }' data-popup='{ "direction": "bottom" }'>
+                        <div data-role="view">
+                            111111111111
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </header>
     </div>
+
+
+
+
+
 
 
     <!--<nav id="menu" class="main-nav">
@@ -42,38 +91,19 @@
         </li>
     </script>
 
-    <div data-role="drawer" id="app-drawer">
-        <div data-role="header">
-            <div data-role="navbar">
-                <span data-role="view-title">Menu</span>
-            </div>
-        </div>
-        <ul id="menuListView">
-            <!--<li>
-                <a href="views/mobile/servicerequests.html"><i class="icon-paperplane"></i> Service Requests</a>
-            </li>
-            <li>
-                <a href="views/mobile/reconmonitor.html"><i class="icon-target"></i> Recon Monitor</a>
-            </li>
-            <li>
-                <a href="views/mobile/estimates.html"><i class="icon-target"></i> Estimates</a>
-            </li>
-            <li>
-                <a href="views/mobile/estimates.html"><i class="icon-clipboard"></i> Estimates</a>
-            </li>
-            <li>
-                <a href="views/mobile/invoices.html"><i class="icon-creditcard"></i> Invoices</a>
-            </li>
-            <li>
-                <a href="views/mobile/dashboard.html"><i class="icon-tools"></i> Dashboard</a>
-            </li>
-            <li>
-                <a href="views/mobile/reports.html"><i class="icon-archive"></i> Reports</a>
-            </li>
-            <li>
-                <a href="views/mobile/notifications.html"><i class="icon-bell"></i> Notifications</a>
-            </li>-->
-        </ul>
-    </div>
+    <script>
+        function closeModalViewLogin() {
+            $("#modalview-login").kendoMobileModalView("close");
+        }
+    </script>
+    <!--<div data-role="drawer" id="app-drawer">-->
+        <!--<div data-role="header">-->
+            <!--<div data-role="navbar">-->
+                <!--<span data-role="view-title">Menu</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<ul id="menuListView">-->
+        <!--</ul>-->
+    <!--</div>-->
 </body>
 </html>
