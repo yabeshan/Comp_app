@@ -20,8 +20,12 @@
             }
         },
         paths: {
-            jquery: 'lib/jquery-2.1.1',
-            kendo: 'lib/kendo.mobile',
+//            jquery: 'lib/jquery-2.1.1',
+//            kendo: 'lib/kendo.mobile',
+
+            jquery: 'lib/jquery.min',
+            kendo: 'lib/kendo.all.min',
+
             binders: 'kendo/kendo.binders.class',
             modernizr: 'lib/modernizr-2.6.2',
             activity: 'plugins/jquery.activity-indicator-1.0.0',

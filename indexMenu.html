@@ -38,10 +38,9 @@
 </head>
 <body>
 
-<ul id="menu" style="padding-left: 300px;height: 300px">
-    <li>
-        Footwear
-        <ul>
+<ul id="menu" style="float: right;width: 0px;height: 0px;margin-right: -20px;margin-top: 100px">
+    <li id="Item1">
+        <ul style="width: 200px;">
             <li>Men's</li>
             <li>Women's</li>
             <li>Junior's</li>
@@ -50,12 +49,24 @@
     </li>
 </ul>
 
+<button style="margin-top: 100px;margin-left: 100px;width: 100px;height: 100px" onclick="{openMenu()}"></button>
 <script>
     $(document).ready(function() {
         $("#menu").kendoMenu({
             direction: "left"
         });
+        menu = $("#menu").data("kendoMenu");
+        flag = false;
     });
+
+    function openMenu() {
+        var item = $("#Item1");
+        if (flag)
+            menu.close(item);
+        else
+            menu.open(item);
+        flag = !flag;
+    }
 </script>
 
 

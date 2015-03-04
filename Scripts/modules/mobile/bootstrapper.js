@@ -15,6 +15,23 @@ function ($, bootstrap, kendo, loadThen, status, menu, user) {
         window.app.navigate('views/mobile/home.html', 'slide');
     }
 
+    function initMenu() {
+        $("#menu").kendoMenu({
+            direction: "left"
+        });
+        menu = $("#menu").data("kendoMenu");
+        flag = false;
+
+        window.openMenu = function() {
+            var item = $("#Item1");
+            if (flag)
+                menu.close(item);
+            else
+                menu.open(item);
+            flag = !flag;
+        };
+    }
+
     var app = {
         pages: {
             home: initHomePage,
@@ -52,6 +69,8 @@ function ($, bootstrap, kendo, loadThen, status, menu, user) {
 
     return {
         init: function () {
+            initMenu();
+            alert(kendo.mobileOs);
             if (kendo.mobileOs) {
                 document.addEventListener('deviceready', function () {
                     alert("deviceready");
