@@ -27,7 +27,7 @@
         }
 
         .view-header {
-            background-color: #eee;height: 60px;border: 0px;
+            background-color: #eee;height: 60px;border: 0px;margin: 0px;
         }
 
         .menu-toggle-btn {
@@ -35,6 +35,12 @@
             color: #000;cursor: pointer;
         }
 
+        .view-content {
+            background-color: #fff;width: 100%;height: 100%;padding: 0px !important;margin: 0px !important;
+        }
+        div, a{
+            color: #000 !important;
+        }
     </style>
 
     <script data-main="Scripts/mainMobile" src="Scripts/lib/require.js"></script>
@@ -42,9 +48,9 @@
 </head>
 <body>
 
-<ul id="menu" style="float: right;width: 0px;height: 0px;margin-right: 20px;margin-top: 62px;">
+<ul id="menu" style="float: right;width: 0px;height: 0px;margin-right: 0px;margin-top: 63px;">
     <li id="menuList">
-        <ul style="width: 200px;background-color: #ccc" id="menuListView"></ul>
+        <ul style="width: 300px;background-color: #ccc;border: none !important;" id="menuListView"></ul>
     </li>
 </ul>
 
@@ -55,65 +61,81 @@
     <header class="view-header">
         <div style="padding: 20px;"><i class='icon-paperplane' style="padding-right: 20px"></i> Service Requests</div>
     </header>
-    service-requests-view
-    <br>
+    <div class="view-content">
+        service-requests-view
+        <br>
+    </div>
 </div>
 
 <div data-role="view" id="recon-monitor-view">
     <header class="view-header">
         <div style="padding: 20px;"><i class='icon-target' style="padding-right: 20px"></i> Recon Monitor</div>
     </header>
-    recon-monitor-view
-    <br>
+    <div class="view-content">
+        recon-monitor-view
+        <br>
+    </div>
 </div>
 
 <div data-role="view" id="estimates-view">
     <header class="view-header">
         <div style="padding: 20px;"><i class='icon-clipboard' style="padding-right: 20px"></i> Estimates</div>
     </header>
-    estimates-view
-    <br>
+    <div class="view-content">
+        estimates-view
+        <br>
+    </div>
 </div>
 
 <div data-role="view" id="invoices-view">
     <header class="view-header">
         <div style="padding: 20px;"><i class='icon-creditcard' style="padding-right: 20px"></i> Invoices</div>
     </header>
-    invoices-view
-    <br>
+    <div class="view-content">
+        invoices-view
+        <br>
+    </div>
 </div>
 
 <div data-role="view" id="dashboard-view">
     <header class="view-header">
         <div style="padding: 20px;"><i class='icon-tools' style="padding-right: 20px"></i> Dashboard</div>
     </header>
-    dashboard-view
-    <br>
+    <div class="view-content">
+        dashboard-view
+        <br>
+    </div>
 </div>
 
 <div data-role="view" id="reports-view">
     <header class="view-header">
         <div style="padding: 20px;"><i class='icon-archive' style="padding-right: 20px"></i> Reports</div>
     </header>
-    reports-view
-    <br>
+    <div class="view-content">
+        reports-view
+        <br>
+    </div>
 </div>
 
 <div data-role="view" id="notifications-view">
     <header class="view-header">
         <div style="padding: 20px;"><i class='icon-bell' style="padding-right: 20px"></i> Notifications</div>
     </header>
-    notifications-view
-    <br>
+    <div class="view-content">
+        notifications-view
+        <br>
+    </div>
 </div>
 
 <div data-role="view" id="logout-view" data-after-show="window.showMenuBtn" data-hide="window.hideMenuBtn">
     <header class="view-header">
         <div style="padding: 20px;"><i class='icon-logout' style="padding-right: 20px"></i> Logout</div>
     </header>
-    logout-view
-    <a href="#notifications-view">qweqwe</a>
-    <br>
+    <div class="view-content">
+        logout-view
+        <a href="#notifications-view">qweqwe</a>
+        <br>
+    </div>
 </div>
 
 
@@ -133,7 +155,7 @@
         <div data-role="tabstrip">
             <div style="background-color: #fff;width: 100%;height: 62px">
                 <img src="Images/logo.png" style="padding-top: 16px" >
-                <div onclick="{window.openMenu() }" class="menu-toggle-btn">
+                <div onmousedown="{window.openMenu() }" class="menu-toggle-btn">
                     <i class='icon-list' style="position:absolute;top: 25px;right:15px"></i>
                 </div>
             </div>

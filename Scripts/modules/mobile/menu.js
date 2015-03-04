@@ -34,16 +34,18 @@ function ($, kendo, loadThen, ro, menu) {
     ];
 
     var onSelectMenu = function(e) {
+        var item = $("#menuList");
+        menu.close(item);
     };
     var onOpenMenu = function(e) {
         menuOpenFlag = true;
         $(".menu-toggle-btn").css('background-color', '#f00');
-        $(".menu-toggle-btn").css('color', '#fff');
+        $(".icon-list").css('color', '#fff', 'important');
     };
     var onCloseMenu = function(e) {
         menuOpenFlag = false;
         $(".menu-toggle-btn").css('background-color', '#fff');
-        $(".menu-toggle-btn").css('color', '#000');
+        $(".icon-list").css('color', '#000', 'important');
     };
     var onActivateMenu = function(e) {
     };
