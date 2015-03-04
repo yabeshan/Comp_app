@@ -24,54 +24,55 @@
 </head>
 <body>
 
-    <div data-role="view" id="home-page">
-        <div style="background-color: #900;width: 100%;height: 100%;">
-            <a href="#login-page" data-role="button">Login/Sign-up</a>
-        </div>
-    </div>
 
-    <div data-role="view" id="login-page">
-        <div style="background-color: #090;width: 100%;height: 100%;">
-            <a href="#home-page" data-role="button">Cancel</a>
-        </div>
-    </div>
+<div data-role="layout" data-id="main-layout">
+    <header data-role="header" style="margin: 0px;border: 0px;height: 62px;">
+        <div data-role="tabstrip">
+            <div style="background-color: #eee;width: 100%;height: 62px">
+                <a href="#modalview-login" data-rel="modalview" data-icon="arrow-e" style="border-right: 1px solid #000;float: left; width: 50px;padding-bottom: 25px"></a>
 
+                <img src="Images/logo.png" style="padding-top: 16px" >
 
-    <div data-role="modalview" id="modalview-login" style="width: 100px;top:100px;left: 100px;margin: 0px" data-modal="true">
-        <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
-    </div>
+                <a href="#show-main-menu" data-rel="popover" data-icon="arrow-e" style="border-left: 1px solid #000;float: right; width: 50px;padding-bottom: 25px"></a>
 
-    <div data-role="layout" data-id="main-layout">
-        <!--<header data-role="header" style="background-color: #900;height: 60px;margin: 0px;border: 0px;">-->
-        <header data-role="header" style="margin: 0px;border: 0px;height: 62px;">
-            <div data-role="tabstrip" style="background-color: #009;height: 62px;">
-                <div style="background-color: #eee;width: 100%;height: 62px">
-                    <a href="#modalview-login" data-rel="modalview" data-icon="arrow-e" style="border-right: 1px solid #000;float: left; width: 50px;padding-bottom: 25px"></a>
-
-                    <img src="Images/logo.png" style="padding-top: 16px" >
-
-                    <a href="#show-main-menu" data-rel="popover" data-icon="arrow-e" style="border-left: 1px solid #000;float: right; width: 50px;padding-bottom: 25px"></a>
-
-                    <div id="show-main-menu" data-role="popover" data-pane='{ "transition": "slide" }' data-popup='{ "direction": "bottom" }'>
-                        <div data-role="view">
-                            111111111111
-                        </div>
+                <div id="show-main-menu" data-role="popover" data-pane='{ "transition": "slide" }' data-popup='{ "direction": "bottom" }'>
+                    <div data-role="view">
+                        111111111111
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
+    </header>
+</div>
+
+
+
+<div data-role="view" id="home-page">
+    <div style="background-color: #900;width: 100%;height: 100%;">
+        <a href="#login-page" data-role="button">Login/Sign-up</a>
     </div>
+</div>
+
+<div data-role="view" id="login-page">
+    <div style="background-color: #090;width: 100%;height: 100%;">
+        <a href="#home-page" data-role="button">Cancel</a>
+    </div>
+</div>
+
+
+<div data-role="modalview" id="modalview-login" style="width: 100px;top:100px;left: 100px;margin: 0px" data-modal="true">
+    <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
+</div>
 
 
 
 
 
 
-
-    <!--<nav id="menu" class="main-nav">
-        <div id="busyindicator"></div>
-        <ul data-template="ul-template" data-bind="source: items, click: onClick"></ul>
-    </nav>-->
+<!--<nav id="menu" class="main-nav">
+    <div id="busyindicator"></div>
+    <ul data-template="ul-template" data-bind="source: items, click: onClick"></ul>
+</nav>-->
     <script id="ul-template" type="text/x-kendo-template">
         <li class="route-top">
             <a>
