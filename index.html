@@ -28,6 +28,7 @@
 
         .view-header {
             background-color: #eee;height: 60px;border: 0px;margin: 0px;
+            box-shadow: 100px 100px 50px #090;
         }
 
         .menu-toggle-btn {
@@ -37,6 +38,7 @@
 
         .view-content {
             background-color: #fff;width: 100%;height: 100%;padding: 0px !important;margin: 0px !important;
+            box-shadow: 100px 100px 50px #900;
         }
         div, a{
             color: #000 !important;
@@ -151,11 +153,11 @@
 
 
 <div data-role="layout" data-id="main-layout">
-    <header data-role="header" style="margin: 0px;border: 0px;height: 62px;">
+    <header data-role="header" style="margin: 0px;border: 0px;height: 62px;box-shadow: 250px 10px 5px #009;">
         <div data-role="tabstrip">
             <div style="background-color: #fff;width: 100%;height: 62px">
                 <img src="Images/logo.png" style="padding-top: 16px" >
-                <div onmousedown="{window.openMenu() }" class="menu-toggle-btn">
+                <div touchstart="{window.openMenu() }" class="menu-toggle-btn">
                     <i class='icon-list' style="position:absolute;top: 25px;right:15px"></i>
                 </div>
             </div>
