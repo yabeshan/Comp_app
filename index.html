@@ -36,12 +36,11 @@
 
     <!--<script data-main="Scripts/mainMobile" src="Scripts/lib/require.js"></script>-->
 </head>
-<body style="padding-left: 200px;padding-top:200px;height: 300px">
+<body>
 
-<ul id="menu">
+<ul id="menu" style="float: right;width: 0px;height: 0px;margin-right: -20px;margin-top: 100px">
     <li id="Item1">
-        Footwear
-        <ul>
+        <ul style="width: 200px;">
             <li>Men's</li>
             <li>Women's</li>
             <li>Junior's</li>
@@ -50,19 +49,23 @@
     </li>
 </ul>
 
-<button style="margin-top: 100px;margin-left: 100px;" onclick="{openMenu()}">2222222</button>
+<button style="margin-top: 100px;margin-left: 100px;width: 100px;height: 100px" onclick="{openMenu()}"></button>
 <script>
     $(document).ready(function() {
         $("#menu").kendoMenu({
             direction: "left"
         });
         menu = $("#menu").data("kendoMenu");
-        menu.open("#Item1");
+        flag = false;
     });
 
     function openMenu() {
-        menu.open("#Item1");
-        alert(111);
+        var item = $("#Item1");
+        if (flag)
+            menu.close(item);
+        else
+            menu.open(item);
+        flag = !flag;
     }
 </script>
 
