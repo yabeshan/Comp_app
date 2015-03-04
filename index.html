@@ -25,6 +25,16 @@
             -webkit-flex-direction: column;
             flex-direction: column;
         }
+
+        .view-header {
+            background-color: #eee;height: 60px;border: 0px;
+        }
+
+        .menu-toggle-btn {
+            border-left: 1px solid #000;float: right; width: 50px;height:100%;
+            color: #000;cursor: pointer;
+        }
+
     </style>
 
     <script data-main="Scripts/mainMobile" src="Scripts/lib/require.js"></script>
@@ -32,30 +42,78 @@
 </head>
 <body>
 
-<ul id="menu" style="float: right;width: 0px;height: 0px;margin-right: -20px;margin-top: 65px;">
-    <li id="Item1">
-        <ul style="width: 200px;background-color: #ccc">
-            <li>Men's</li>
-            <li>Women's</li>
-            <li>Junior's</li>
-            <li>Children's</li>
-        </ul>
+<ul id="menu" style="float: right;width: 0px;height: 0px;margin-right: 20px;margin-top: 62px;">
+    <li id="menuList">
+        <ul style="width: 200px;background-color: #ccc" id="menuListView"></ul>
     </li>
 </ul>
 
 
 
 
-<div data-role="view" id="home-page">
-    <div style="background-color: #900;width: 100%;height: 100%;">
-        <a href="#login-page" data-role="button">Login/Sign-up</a>
-    </div>
+<div data-role="view" id="service-requests-view">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-paperplane' style="padding-right: 20px"></i> Service Requests</div>
+    </header>
+    service-requests-view
+    <br>
 </div>
 
-<div data-role="view" id="login-page">
-    <div style="background-color: #090;width: 100%;height: 100%;">
-        <a href="#home-page" data-role="button">Cancel</a>
-    </div>
+<div data-role="view" id="recon-monitor-view">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-target' style="padding-right: 20px"></i> Recon Monitor</div>
+    </header>
+    recon-monitor-view
+    <br>
+</div>
+
+<div data-role="view" id="estimates-view">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-clipboard' style="padding-right: 20px"></i> Estimates</div>
+    </header>
+    estimates-view
+    <br>
+</div>
+
+<div data-role="view" id="invoices-view">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-creditcard' style="padding-right: 20px"></i> Invoices</div>
+    </header>
+    invoices-view
+    <br>
+</div>
+
+<div data-role="view" id="dashboard-view">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-tools' style="padding-right: 20px"></i> Dashboard</div>
+    </header>
+    dashboard-view
+    <br>
+</div>
+
+<div data-role="view" id="reports-view">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-archive' style="padding-right: 20px"></i> Reports</div>
+    </header>
+    reports-view
+    <br>
+</div>
+
+<div data-role="view" id="notifications-view">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-bell' style="padding-right: 20px"></i> Notifications</div>
+    </header>
+    notifications-view
+    <br>
+</div>
+
+<div data-role="view" id="logout-view" data-after-show="window.showMenuBtn" data-hide="window.hideMenuBtn">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-logout' style="padding-right: 20px"></i> Logout</div>
+    </header>
+    logout-view
+    <a href="#notifications-view">qweqwe</a>
+    <br>
 </div>
 
 
@@ -73,9 +131,11 @@
 <div data-role="layout" data-id="main-layout">
     <header data-role="header" style="margin: 0px;border: 0px;height: 62px;">
         <div data-role="tabstrip">
-            <div style="background-color: #eee;width: 100%;height: 62px">
+            <div style="background-color: #fff;width: 100%;height: 62px">
                 <img src="Images/logo.png" style="padding-top: 16px" >
-                <a onclick="{openMenu()}" data-rel="modalview" data-icon="arrow-e" style="border-left: 1px solid #000;float: right; width: 50px;padding-bottom: 25px"></a>
+                <div onclick="{window.openMenu() }" class="menu-toggle-btn">
+                    <i class='icon-list' style="position:absolute;top: 25px;right:15px"></i>
+                </div>
             </div>
         </div>
     </header>

@@ -15,34 +15,17 @@ function ($, bootstrap, kendo, loadThen, status, menu, user) {
         window.app.navigate('views/mobile/home.html', 'slide');
     }
 
-    function initMenu() {
-        $("#menu").kendoMenu({
-            direction: "left"
-        });
-        menu = $("#menu").data("kendoMenu");
-        flag = false;
-
-        window.openMenu = function() {
-            var item = $("#Item1");
-            if (flag)
-                menu.close(item);
-            else
-                menu.open(item);
-            flag = !flag;
-        };
-    }
-
     var app = {
         pages: {
             home: initHomePage,
             login: initLoginPage,
         },
         start: function () {
-//            if (user.checkAuthenticated() || true) {
-//                this.pages.home();
-//            } else {
-//                this.pages.login();
-//            }
+            if (user.checkAuthenticated()) {
+                window.app.navigate('recon-monitor-view', 'slide');
+            } else {
+                window.app.navigate('logout-view', 'slide');
+            }
         }
     };
 
@@ -69,8 +52,7 @@ function ($, bootstrap, kendo, loadThen, status, menu, user) {
 
     return {
         init: function () {
-            initMenu();
-            alert(kendo.mobileOs);
+            menu.init();
             if (kendo.mobileOs) {
                 document.addEventListener('deviceready', function () {
                     alert("deviceready");
@@ -89,7 +71,7 @@ function ($, bootstrap, kendo, loadThen, status, menu, user) {
                     layout: "main-layout",
                     transition: "slide" });
                 window.app = kendoApp;
-//                app.start();
+                app.start();
             }
         }
     };

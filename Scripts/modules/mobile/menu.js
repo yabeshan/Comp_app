@@ -1,63 +1,75 @@
 ﻿define(['jquery', 'kendo', 'loadThen', 'modules/repairOrders', 'modules/menu'],
 function ($, kendo, loadThen, ro, menu) {
+
+    /************** PUBLICK *****************/
+
+    window.openMenu = function() {
+        var item = $("#menuList");
+        if (menuOpenFlag)
+            menu.close(item);
+        else
+            menu.open(item);
+        menuOpenFlag = !menuOpenFlag;
+    };
+
+    window.showMenuBtn = function(){
+        $(".menu-toggle-btn").css('visibility', 'hidden');
+    };
+    window.hideMenuBtn = function() {
+        $(".menu-toggle-btn").css('visibility', 'visible');
+    };
+
+    /**************** PRIVATE ************/
+
+    var menuOpenFlag = false,
+        menuItems = [
+        { name: 'Service Requests', url: 'service-requests-view', icon: 'icon-paperplane' },
+        { name: 'Recon Monitor', url: 'recon-monitor-view', icon: 'icon-target' },
+        { name: 'Estimates', url: 'estimates-view', icon: 'icon-clipboard' },
+        { name: 'Invoices', url: 'invoices-view', icon: 'icon-creditcard' },
+        { name: 'Dashboard', url: 'dashboard-view', icon: 'icon-tools' },
+        { name: 'Reports', url: 'reports-view', icon: 'icon-archive' },
+        { name: 'Notifications', url: 'notifications-view', icon: 'icon-bell' },
+        { name: 'Logout', url: 'logout-view', icon: 'icon-logout' }
+    ];
+
+    var onSelectMenu = function(e) {
+    };
+    var onOpenMenu = function(e) {
+        menuOpenFlag = true;
+        $(".menu-toggle-btn").css('background-color', '#f00');
+        $(".menu-toggle-btn").css('color', '#fff');
+    };
+    var onCloseMenu = function(e) {
+        menuOpenFlag = false;
+        $(".menu-toggle-btn").css('background-color', '#fff');
+        $(".menu-toggle-btn").css('color', '#000');
+    };
+    var onActivateMenu = function(e) {
+    };
+    var onDeactivateMenu = function(e) {
+    };
+
     var init = function () {
-        //define  vm for menu
-        //debugger
-        //var viewModel = kendo.observable({
-        //    items: menu.menuItems,
-        //    onClick: function (e) {
-        //        //get target
-        //        var target = $(e.target);
-
-        //        var span;
-        //        if (target.prop('tagName') == 'A') {
-        //            span = target.find('span');
-        //        } else if (target.prop('tagName') == 'I') {
-        //            span = target.parent().find('span');
-        //        } else {
-        //            span = target;
-        //        }
-
-        //        //set menu item as active
-        //        $('.route-top').removeClass('active');
-        //        span.parent().parent().addClass('active');
-
-        //        //navigate
-        //        var id = span.data('id');
-        //        var text = span.text();
-
-        //        // update the browser's URL / hash route
-        //        router.navigate(text, false);
-
-
-        //        //refresh content
-        //        window.app.navigate('views/mobile/' + id + '.html')
-
-        //        //    .then(function () {
-        //        //    if (id == 'reconmonitor') ro.init();
-        //        //}, function () {
-        //        //    // error
-        //        //});
-
-        //    }
-        //});
-
-        ////bind vm to the content
-        //kendo.bind($('#menuListView'), viewModel);
-
-        //// Define a router with a basic routes
-        //var router = new kendo.Router();
-        //// start the router to handle the routes
-        //router.start();
+        $("#menu").kendoMenu({
+            select: onSelectMenu,
+            open: onOpenMenu,
+            close: onCloseMenu,
+            activate: onActivateMenu,
+            deactivate: onDeactivateMenu
+        });
+        menu = $("#menu").data("kendoMenu");
 
         $('#menuListView').kendoMobileListView({
-            template: "<a href='/vies/mobile/#:url#.html'><i class='#:icon#'></i> #:name#</a>",
-            dataSource: kendo.data.DataSource.create({ data: menu.items })
+            template: "<a href='#:url#'><i class='#:icon#'></i> #:name#</a>",
+            dataSource: kendo.data.DataSource.create({ data: menuItems })
         });
     };
 
     return {
-        init: init
+        init: init,
+        items: menuItems,
+        stat: menuOpenFlag
     };
 });
 
