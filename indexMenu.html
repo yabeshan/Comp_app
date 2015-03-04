@@ -1,4 +1,4 @@
-﻿<html class="no-js" lang="en">
+<html class="no-js" lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Repair360</title>
@@ -36,10 +36,10 @@
 
     <!--<script data-main="Scripts/mainMobile" src="Scripts/lib/require.js"></script>-->
 </head>
-<body style="padding-left: 200px;padding-top:200px;height: 300px">
+<body>
 
-<ul id="menu">
-    <li id="Item1">
+<ul id="menu" style="padding-left: 300px;height: 300px">
+    <li>
         Footwear
         <ul>
             <li>Men's</li>
@@ -50,20 +50,12 @@
     </li>
 </ul>
 
-<button style="margin-top: 100px;margin-left: 100px;" onclick="{openMenu()}">2222222</button>
 <script>
     $(document).ready(function() {
         $("#menu").kendoMenu({
             direction: "left"
         });
-        menu = $("#menu").data("kendoMenu");
-        menu.open("#Item1");
     });
-
-    function openMenu() {
-        menu.open("#Item1");
-        alert(111);
-    }
 </script>
 
 
