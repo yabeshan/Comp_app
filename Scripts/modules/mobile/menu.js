@@ -44,6 +44,7 @@ function ($, kendo, loadThen, ro, menu) {
         menuOpenFlag = false;
         $(".menu-toggle-btn").css('background-color', '#fff');
         $(".icon-list").css('color', '#000', 'important');
+        alert(111);
     };
     var onActivateMenu = function(e) {
     };
@@ -68,7 +69,7 @@ function ($, kendo, loadThen, ro, menu) {
 //        if (data && data.id) alert(data.id);
             },
 //            e,#:url#   href='#:url#'   data-id='#:url#'
-            template: "<a href='#:url#'><i class='#:icon#'></i> #:name#</a>",
+            template: "<a data-href='#:url#'><i class='#:icon#'></i> #:name#</a>",
             dataSource: kendo.data.DataSource.create({ data: menuItems })
 
         });
