@@ -60,9 +60,17 @@ function ($, kendo, loadThen, ro, menu) {
         });
         menu = $("#menu").data("kendoMenu");
 
+
         $('#menuListView').kendoMobileListView({
-            template: "<a href='#:url#' onclick='{window.onCloseMenu()}'><i class='#:icon#'></i> #:name#</a>",
+            click: function(e) {
+                window.onCloseMenu();
+            //        var data = e.button.data();
+//        if (data && data.id) alert(data.id);
+            },
+//            e,#:url#   href='#:url#'   data-id='#:url#'
+            template: "<a href='#:url#'><i class='#:icon#'></i> #:name#</a>",
             dataSource: kendo.data.DataSource.create({ data: menuItems })
+
         });
     };
 
