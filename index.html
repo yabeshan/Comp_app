@@ -31,7 +31,7 @@
         }
 
         .menu-toggle-btn {
-            border-left: 1px solid #000;float: right; width: 50px;height:100%;
+            border-left: 1px solid #efefef;float: right; width: 50px;height:100%;
             color: #000;cursor: pointer;
         }
 
@@ -62,7 +62,7 @@
     <header data-role="header" style="margin: 0px;border: 0px;height: 62px;">
         <div data-role="tabstrip" style="box-shadow: none;">
             <div style="background-color: #fff;width: 100%;height: 62px;">
-                <img src="Images/logo.png" style="padding-top: 16px" >
+                <img src="Images/logo-new.png" style="height: 46px" >
                 <div onmousedown="{window.openMenu() }" class="menu-toggle-btn">
                     <i class='icon-list' style="position:absolute;top: 25px;right:15px"></i>
                 </div>
@@ -100,12 +100,28 @@
 
 <div data-role="view" id="recon-monitor-view">
     <header class="view-header">
+        <i id="search-menu-btn" class='icon-search' style="float: right;padding: 20px;cursor: pointer"
+           onmousedown="{ window.searchPanelOpen()}"></i>
         <div style="padding: 20px;"><i class='icon-target' style="padding-right: 20px"></i> Recon Monitor</div>
     </header>
     <div class="view-content">
+        <ul id="search-menu" style="float: right;border: none;margin-top: -10px">
+            <li id="searchMenuList">
+                <ul style="width: 300px;background-color: #ccc;border: none !important;" id="searchMenuListView">
+                    <li>Saved</li>
+                    <li>Departments</li>
+                    <li>Phases</li>
+                    <li>Search</li>
+                    <input type="button" class="btn-black" value="Search" onclick="{window.startSearchFromMenu()}" />
+                    <i class='icon-close' style="padding-left: 20px;cursor: pointer" onclick="{window.cancelSearchFromMenu()}"></i>
+                </ul>
+            </li>
+        </ul>
+
         recon-monitor-view
         <br>
     </div>
+
 </div>
 
 <!----------------------------- Estimates ----------------------------->
@@ -178,20 +194,93 @@
     </div>
 </div>
 
-<!----------------------------- Logout ----------------------------->
+<!----------------------------- Forgot password ----------------------------->
 
-<div data-role="view" id="logout-view" data-after-show="window.showMenuBtn" data-hide="window.hideMenuBtn" data-stretch="true">
-    <div>
-        <header class="view-header">
-            <div style="padding: 20px;"><i class='icon-logout' style="padding-right: 20px"></i> Logout</div>
-        </header>
-        <div class="view-content">
-            logout-view
-            <a href="#notifications-view">qweqwe</a>
-            <br>
+<div data-role="view" id="forgot-password-view" data-stretch="true">
+    <div style="background-color: #e1e1e1">
+        <div class="view-content" style="background-color: #e1e1e1">
+            <div class="loginPage">
+
+                <p><strong>Forgot your password?</strong></p>
+                <form>
+                    <label data-bind="class: { error: email.hasError }">
+                        <input id="email" data-bind="value: email.value" type="text" placeholder="E-mail" />
+                    </label>
+                    <div class="errorMessege" data-bind="visible: email.hasError">
+                        <p class=" text-red">
+                            <i class="icon-warning"></i>Wrong E-mail address
+                        </p>
+                    </div>
+
+                    <input type="button" class="btn-black" onclick="{restorePassword()}" value="Submit" />
+                </form>
+
+            </div>
         </div>
     </div>
 </div>
+<script>
+    function restorePassword() {
+        window.app.navigate('logout-view');
+    }
+</script>
+
+<!----------------------------- Logout ----------------------------->
+
+<div data-role="view" id="logout-view" data-after-show="window.showMenuBtn" data-hide="window.hideMenuBtn" data-stretch="true">
+    <div style="background-color: #e1e1e1">
+        <div class="view-content" style="background-color: #e1e1e1">
+            <div class="loginPage">
+                <p><strong>Login</strong></p>
+                <form>
+                    <label data-bind="class: { error: email.hasError }">
+                        <input id="email" data-bind="value: email.value" type="text" placeholder="E-mail"/>
+                    </label>
+                    <div class="errorMessege" data-bind="visible: email.hasError">
+                        <p class=" text-red">
+                            <i class="icon-warning"></i>Wrong E-mail address
+                        </p>
+                    </div>
+                    <label data-bind="class: { error: password.hasError }">
+                        <input id="password" data-bind="value: password.value" type="password" placeholder="Password" />
+                    </label>
+                    <div class="errorMessege" data-bind="visible: password.hasError">
+                        <p class="text-red">
+                            <i class="icon-warning"></i>Wrong Password
+                        </p>
+                    </div>
+
+
+                    <input type="button" class="btn-black" onclick="{loginHandler()}" value="Login" />
+                </form>
+            </div>
+
+            <div style="position: absolute;bottom: 10px;width: 100%;text-align: center">
+                <a data-role="button" href="#forgot-password-view" data-transition="slide:left" class="link-button">Forgot password?</a>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #email, #password {
+        background-color: #fff;border: 1px solid #cdcdcd;border-radius: 0px;padding: 0px !important;
+    }
+    .link-button.km-button:not(.km-back) {
+        border: none;
+        color:#777;
+        text-decoration: underline;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+</style>
+<script>
+    function loginHandler() {
+        window.app.navigate('recon-monitor-view');
+    }
+</script>
+
+
 
 </body>
 </html>

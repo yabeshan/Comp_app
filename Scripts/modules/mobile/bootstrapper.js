@@ -22,15 +22,14 @@ function ($, bootstrap, kendo, loadThen, status, menu, user) {
         },
         start: function () {
             if (user.checkAuthenticated() || true) {
-                window.app.navigate('recon-monitor-view', 'slide');
+                window.app.navigate('recon-monitor-view');
             } else {
-                window.app.navigate('logout-view', 'slide');
+                window.app.navigate('logout-view');
             }
         }
     };
 
     var homeAfterShow = function () {
-        alert('home after show');
         status.init();
         menu.init();
         user.showlogout(initLoginPage);
@@ -53,6 +52,7 @@ function ($, bootstrap, kendo, loadThen, status, menu, user) {
     return {
         init: function () {
             menu.init();
+            menu.searchInit();
             if (kendo.mobileOs) {
                 document.addEventListener('deviceready', function () {
                     alert("deviceready");

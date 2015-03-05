@@ -22,6 +22,7 @@ function ($, kendo, loadThen, ro, menu) {
     /**************** PRIVATE ************/
 
     var menuOpenFlag = false,
+        searchMenuOpenFlag = false,
         menuItems = [
         { name: 'Service Requests', url: 'service-requests-view', icon: 'icon-paperplane' },
         { name: 'Recon Monitor', url: 'recon-monitor-view', icon: 'icon-target' },
@@ -37,17 +38,43 @@ function ($, kendo, loadThen, ro, menu) {
     };
     var onOpenMenu = function(e) {
         menuOpenFlag = true;
-        $(".menu-toggle-btn").css('background-color', '#f00');
+        $(".menu-toggle-btn").css('background-color', '#ed1c24');
         $(".icon-list").css('color', '#fff', 'important');
     };
     window.onCloseMenu = function(e) {
         menuOpenFlag = false;
         $(".menu-toggle-btn").css('background-color', '#fff');
-        $(".icon-list").css('color', '#000', 'important');
+        $(".icon-list").css('color', '#454545', 'important');
     };
     var onActivateMenu = function(e) {
     };
     var onDeactivateMenu = function(e) {
+    };
+
+    window.searchPanelOpen = function () {
+        var item = $("#searchMenuList");
+        if (searchMenuOpenFlag)
+            searchMenu.close(item);
+        else
+            searchMenu.open(item);
+        searchMenuOpenFlag = !searchMenuOpenFlag;
+    }
+    var onOpenSearchMenu = function() {
+        searchMenuOpenFlag = true;
+        $("#search-menu-btn").css('color', '#ed1c24', 'important');
+    };
+    var onCloseSearchMenu = function() {
+        searchMenuOpenFlag = false;
+        $("#search-menu-btn").css('color', '#454545', 'important');
+    };
+
+    window.startSearchFromMenu = function() {
+        var item = $("#searchMenuList");
+        searchMenu.close(item);
+    };
+    window.cancelSearchFromMenu = function() {
+        var item = $("#searchMenuList");
+        searchMenu.close(item);
     };
 
     var init = function () {
@@ -77,8 +104,17 @@ function ($, kendo, loadThen, ro, menu) {
         });
     };
 
+    var searchInit = function() {
+        $("#search-menu").kendoMenu({
+            open: onOpenSearchMenu,
+            close: onCloseSearchMenu
+        });
+        searchMenu = $("#search-menu").data("kendoMenu");
+    }
+
     return {
         init: init,
+        searchInit: searchInit,
         items: menuItems,
         stat: menuOpenFlag
     };
