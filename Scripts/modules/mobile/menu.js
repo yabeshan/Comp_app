@@ -34,8 +34,11 @@ function ($, kendo, loadThen, ro, menu) {
     ];
 
     var onSelectMenu = function(e) {
-        var item = $("#menuList");
-        menu.close(item);
+        setTimeout(function(){
+            var item = $("#menuList");
+            menu.close(item);
+            alert(111);
+        }, 2000);
     };
     var onOpenMenu = function(e) {
         menuOpenFlag = true;
