@@ -64,7 +64,10 @@ function ($, kendo, loadThen, ro, menu) {
 
         $('#menuListView').kendoMobileListView({
             click: function(e) {
-                window.onCloseMenu();
+                var item = $("#menuList");
+                menu.close(item);
+                
+//                window.onCloseMenu();
             //        var data = e.button.data();
 //        if (data && data.id) alert(data.id);
             },
