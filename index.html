@@ -46,7 +46,9 @@
     <script data-main="Scripts/mainMobile" src="Scripts/lib/require.js"></script>
 
 </head>
-<body style="background-color: #fff !important;">
+<body>
+
+<!----------------------------- TOP MENU ----------------------------->
 
 <ul id="menu" style="float: right;width: 0px;height: 0px;margin-right: 0px;margin-top: 63px;">
     <li id="menuList">
@@ -54,103 +56,7 @@
     </li>
 </ul>
 
-
-
-
-<div data-role="view" id="service-requests-view">
-    <header class="view-header">
-        <div style="padding: 20px;"><i class='icon-paperplane' style="padding-right: 20px"></i> Service Requests</div>
-    </header>
-    <div class="view-content">
-        service-requests-view
-        <br>
-    </div>
-</div>
-
-<div data-role="view" id="recon-monitor-view">
-    <header class="view-header">
-        <div style="padding: 20px;"><i class='icon-target' style="padding-right: 20px"></i> Recon Monitor</div>
-    </header>
-    <div class="view-content">
-        recon-monitor-view
-        <br>
-    </div>
-</div>
-
-<div data-role="view" id="estimates-view">
-    <header class="view-header">
-        <div style="padding: 20px;"><i class='icon-clipboard' style="padding-right: 20px"></i> Estimates</div>
-    </header>
-    <div class="view-content">
-        estimates-view
-        <br>
-    </div>
-</div>
-
-<div data-role="view" id="invoices-view">
-    <header class="view-header">
-        <div style="padding: 20px;"><i class='icon-creditcard' style="padding-right: 20px"></i> Invoices</div>
-    </header>
-    <div class="view-content">
-        invoices-view
-        <br>
-    </div>
-</div>
-
-<div data-role="view" id="dashboard-view">
-    <header class="view-header">
-        <div style="padding: 20px;"><i class='icon-tools' style="padding-right: 20px"></i> Dashboard</div>
-    </header>
-    <div class="view-content">
-        dashboard-view
-        <br>
-    </div>
-</div>
-
-<div data-role="view" id="reports-view">
-    <header class="view-header">
-        <div style="padding: 20px;"><i class='icon-archive' style="padding-right: 20px"></i> Reports</div>
-    </header>
-    <div class="view-content">
-        reports-view
-        <br>
-    </div>
-</div>
-
-<div data-role="view" id="notifications-view">
-    <header class="view-header">
-        <div style="padding: 20px;"><i class='icon-bell' style="padding-right: 20px"></i> Notifications</div>
-    </header>
-    <div class="view-content">
-        notifications-view
-        <br>
-    </div>
-</div>
-
-<div data-role="view" id="logout-view" data-after-show="window.showMenuBtn" data-hide="window.hideMenuBtn" data-stretch="true">
-    <div>
-        <header class="view-header">
-            <div style="padding: 20px;"><i class='icon-logout' style="padding-right: 20px"></i> Logout</div>
-        </header>
-        <div class="view-content">
-            logout-view
-            <a href="#notifications-view">qweqwe</a>
-            <br>
-        </div>
-    </div>
-</div>
-
-
-<div data-role="modalview" id="modalview-login" style="width: 100px;top:100px;left: 100px;margin: 0px" data-modal="true">
-    <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
-</div>
-<script>
-    function closeModalViewLogin() {
-        $("#modalview-login").kendoMobileModalView("close");
-    }
-</script>
-
-
+<!----------------------------- MAIN LAYOUT ----------------------------->
 
 <div data-role="layout" data-id="main-layout">
     <header data-role="header" style="margin: 0px;border: 0px;height: 62px;">
@@ -165,6 +71,127 @@
     </header>
 </div>
 
+<!----------------------------- MODAL POPUP ----------------------------->
+
+<div data-role="modalview" id="modalview-login" style="width: 100px;top:100px;left: 100px;margin: 0px" data-modal="true">
+    <a data-click="closeModalViewLogin" data-role="button" data-align="right">Cancel</a>
+</div>
+<script>
+    function closeModalViewLogin() {
+        $("#modalview-login").kendoMobileModalView("close");
+    }
+</script>
+
+<!----------------------------- Service Requests ----------------------------->
+
+<div data-role="view" id="service-requests-view" data-stretch="true">
+    <div>
+        <header class="view-header">
+            <div style="padding: 20px;"><i class='icon-paperplane' style="padding-right: 20px"></i> Service Requests</div>
+        </header>
+        <div class="view-content">
+            service-requests-view
+            <br>
+        </div>
+    </div>
+</div>
+
+<!----------------------------- Recon Monitor ----------------------------->
+
+<div data-role="view" id="recon-monitor-view">
+    <header class="view-header">
+        <div style="padding: 20px;"><i class='icon-target' style="padding-right: 20px"></i> Recon Monitor</div>
+    </header>
+    <div class="view-content">
+        recon-monitor-view
+        <br>
+    </div>
+</div>
+
+<!----------------------------- Estimates ----------------------------->
+
+<div data-role="view" id="estimates-view" data-stretch="true">
+    <div>
+        <header class="view-header">
+            <div style="padding: 20px;"><i class='icon-clipboard' style="padding-right: 20px"></i> Estimates</div>
+        </header>
+        <div class="view-content">
+            estimates-view
+            <br>
+        </div>
+    </div>
+</div>
+
+<!----------------------------- Invoices ----------------------------->
+
+<div data-role="view" id="invoices-view" data-stretch="true">
+    <div>
+        <header class="view-header">
+            <div style="padding: 20px;"><i class='icon-creditcard' style="padding-right: 20px"></i> Invoices</div>
+        </header>
+        <div class="view-content">
+            invoices-view
+            <br>
+        </div>
+    </div>
+</div>
+
+<!----------------------------- Dashboard ----------------------------->
+
+<div data-role="view" id="dashboard-view" data-stretch="true">
+    <div>
+        <header class="view-header">
+            <div style="padding: 20px;"><i class='icon-tools' style="padding-right: 20px"></i> Dashboard</div>
+        </header>
+        <div class="view-content">
+            dashboard-view
+            <br>
+        </div>
+    </div>
+</div>
+
+<!----------------------------- Reports ----------------------------->
+
+<div data-role="view" id="reports-view" data-stretch="true">
+    <div>
+        <header class="view-header">
+            <div style="padding: 20px;"><i class='icon-archive' style="padding-right: 20px"></i> Reports</div>
+        </header>
+        <div class="view-content">
+            reports-view
+            <br>
+        </div>
+    </div>
+</div>
+
+<!----------------------------- Notifications ----------------------------->
+
+<div data-role="view" id="notifications-view" data-stretch="true">
+    <div>
+        <header class="view-header">
+            <div style="padding: 20px;"><i class='icon-bell' style="padding-right: 20px"></i> Notifications</div>
+        </header>
+        <div class="view-content">
+            notifications-view
+            <br>
+        </div>
+    </div>
+</div>
+
+<!----------------------------- Logout ----------------------------->
+
+<div data-role="view" id="logout-view" data-after-show="window.showMenuBtn" data-hide="window.hideMenuBtn" data-stretch="true">
+    <div>
+        <header class="view-header">
+            <div style="padding: 20px;"><i class='icon-logout' style="padding-right: 20px"></i> Logout</div>
+        </header>
+        <div class="view-content">
+            logout-view
+            <a href="#notifications-view">qweqwe</a>
+            <br>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
