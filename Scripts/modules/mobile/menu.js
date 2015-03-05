@@ -34,18 +34,13 @@ function ($, kendo, loadThen, ro, menu) {
     ];
 
     var onSelectMenu = function(e) {
-        setTimeout(function(){
-            var item = $("#menuList");
-            menu.close(item);
-            alert(111);
-        }, 2000);
     };
     var onOpenMenu = function(e) {
         menuOpenFlag = true;
         $(".menu-toggle-btn").css('background-color', '#f00');
         $(".icon-list").css('color', '#fff', 'important');
     };
-    var onCloseMenu = function(e) {
+    window.onCloseMenu = function(e) {
         menuOpenFlag = false;
         $(".menu-toggle-btn").css('background-color', '#fff');
         $(".icon-list").css('color', '#000', 'important');
@@ -59,14 +54,14 @@ function ($, kendo, loadThen, ro, menu) {
         $("#menu").kendoMenu({
             select: onSelectMenu,
             open: onOpenMenu,
-            close: onCloseMenu,
+            close: window.onCloseMenu,
             activate: onActivateMenu,
             deactivate: onDeactivateMenu
         });
         menu = $("#menu").data("kendoMenu");
 
         $('#menuListView').kendoMobileListView({
-            template: "<a href='#:url#'><i class='#:icon#'></i> #:name#</a>",
+            template: "<a href='#:url#' onclick='{window.onCloseMenu()}'><i class='#:icon#'></i> #:name#</a>",
             dataSource: kendo.data.DataSource.create({ data: menuItems })
         });
     };
